@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//SaveTheDate//Matrimonio Giovanni e Giulia//IT
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:matrimonio-giovanni-giulia-20260705@example.com
+SUMMARY:Matrimonio Giovanni & Giulia
+DTSTART;VALUE=DATE:20260705
+DTEND;VALUE=DATE:20260706
+LOCATION:Scuderie San Giorgio, Roma
+DESCRIPTION:Save the Date - Matrimonio Giovanni & Giulia.
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Promemoria matrimonio
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+END:VCALENDAR
