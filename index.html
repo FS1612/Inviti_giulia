@@ -242,7 +242,7 @@
 
     .right-section {
       flex: 1;
-      padding: 50px 50px;   /* era 50px → ora identico alla sinistra */
+      padding: 50px 50px;   
       background: linear-gradient(135deg, #fffef9 0%, #fff5f8 100%);
       position: relative;
       border-top-right-radius: 20px;
@@ -255,16 +255,16 @@
       position: absolute;
       inset: 0;
       background-image: url("img/world_right.jpg");
-      background-size: cover;     /* riempie tutto lo spazio senza deformare */
-      background-position: center; /* centrata */
-      opacity: 0.18;              /* come la sinistra */
-      pointer-events: none;       /* non blocca click */
+      background-size: cover;     
+      background-position: center; 
+      opacity: 0.18;              
+      pointer-events: none;      
       z-index: 0;
     }
 
     .right-section * {
       position: relative;
-      z-index: 2; /* porta contenuti davanti allo sfondo */
+      z-index: 2; 
     }
     .top-info {
       display: flex;
@@ -489,23 +489,7 @@
     .mobile-link a:hover {
       text-decoration: underline;
     }
-    .world-right {
-      width: 100%;
-      display: cover;
-      justify-content: flex-end;
-      margin-top: -10px; /* avvicina alla data */
-      margin-bottom: 10px;
-    }
 
-    .world-right img {
-      width: 150px;        /* un po’ più larga */
-      height: 150px;       /* molto più alta → spinge in basso il QR */
-      opacity: 0.18;
-      object-fit:fill;   /* riempie lo spazio senza distorsioni */
-      object-position: top; /* mostra solo la parte alta della mappa */
-      display: block;
-      margin-bottom: 40px; /* opzionale, per staccare leggermente dal QR */
-    }
   </style>
 
   <script>
@@ -661,9 +645,7 @@
         👉 Apri i dettagli dell’evento
       </a>
     </div>
-    <div class="footer-text">
-      For resort details and flight information scan QR code
-    </div>
+
   </div>
 </div>
 
