@@ -39,7 +39,6 @@
       box-shadow: 0 25px 70px rgba(255, 107, 157, 0.4);
     }
 
-    /* Banda oro sinistra */
     .gold-left {
       width: 55px;
       background: linear-gradient(180deg, #ff6b9d 0%, #ffa07a 50%, #ff6b9d 100%);
@@ -59,7 +58,6 @@
       text-transform: uppercase;
     }
 
-    /* Sezione principale sinistra */
     .left-section {
       flex: 1.5;
       padding: 55px 45px;
@@ -163,31 +161,26 @@
       font-weight: 600;
     }
 
-    .stamp-circle {
+    /* ❤️ TRAIETTORIA + AEREO */
+    .heart-trail {
       position: absolute;
-      top:15%;
-      right: 10px;
-      transform: translateY(-50%);
-      width: 60px;
-      height: 60px;
-      border: 2px solid #c4a864;
-      border-radius: 50%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      color: #c4a864;
+      top: 8%;
+      right: 2px;
+      width: 300px;
+      height: 300px;
     }
 
-    .stamp-icon {
-      font-size: 20px;
+    .heart-trail svg {
+      width: 100%;
+      height: 100%;
     }
 
-    .stamp-location {
-      font-size: 7px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      margin-top: 2px;
+    .dashed-path {
+      fill: none;
+      stroke: #ffd3e0;
+      stroke-width: 2;
+      stroke-dasharray: 5, 5;
+      opacity: 0.6;
     }
 
     /* Sezione destra */
@@ -277,39 +270,10 @@
       overflow: hidden;
     }
 
-    .qr-code:hover {
-      transform: scale(1.1) rotate(5deg);
-      box-shadow: 0 10px 40px rgba(255, 107, 157, 0.4);
-      border-color: #ff6b9d;
-    }
-
-    .qr-code::before {
-      content: "SCAN ME! 📱";
-      position: absolute;
-      inset: 0;
-      background: rgba(255, 107, 157, 0.95);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-size: 14px;
-      font-weight: 600;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-
-    .qr-code:hover::before {
-      opacity: 1;
-    }
-
     .qr-code img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-    }
-
-    .qr-info {
-      flex: 1;
     }
 
     .qr-title {
@@ -321,13 +285,6 @@
       font-weight: 500;
     }
 
-    .qr-description {
-      font-size: 10px;
-      line-height: 1.8;
-      color: #8a8a8a;
-      font-weight: 300;
-    }
-
     .footer-text {
       margin-top: 40px;
       text-align: center;
@@ -336,108 +293,17 @@
       color: #c792a8;
       text-transform: uppercase;
     }
-
-    /* Banda oro destra */
-    .gold-right {
-      width: 55px;
-      background: linear-gradient(180deg, #ff6b9d 0%, #ffa07a 50%, #ff6b9d 100%);
-    }
-
-    /* Cuoricini decorativi */
-    .boarding-pass::before,
-    .boarding-pass::after {
-      content: "💕";
-      position: absolute;
-      font-size: 20px;
-      opacity: 0.3;
-      animation: pulse 2s ease-in-out infinite;
-      transition: all 0.3s ease;
-      z-index: 100;
-      pointer-events: none;
-    }
-
-    .boarding-pass:hover::before,
-    .boarding-pass:hover::after {
-      font-size: 40px;
-      opacity: 0.6;
-    }
-
-    .boarding-pass::before {
-      top: 20px;
-      left: 100px;
-    }
-
-    .boarding-pass::after {
-      bottom: 20px;
-      right: 100px;
-      animation-delay: 1s;
-    }
-
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); opacity: 0.3; }
-      50% { transform: scale(1.2); opacity: 0.5; }
-    }
-
-    /* Coriandoli al click */
-    @keyframes confetti {
-      0% {
-        transform: translateY(0) rotate(0deg);
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(-200px) rotate(720deg);
-        opacity: 0;
-      }
-    }
-
-    .confetti {
-      position: fixed;
-      width: 10px;
-      height: 10px;
-      background: #ff6b9d;
-      pointer-events: none;
-      animation: confetti 1s ease-out forwards;
-    }
-
-    /* Effetto bagliore banda */
-    .gold-left, .gold-right {
-      position: relative;
-      overflow: hidden;
-    }
-
-    .gold-left::before, .gold-right::before {
-      content: "";
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: linear-gradient(
-        45deg,
-        transparent,
-        rgba(255, 255, 255, 0.3),
-        transparent
-      );
-      transform: rotate(45deg);
-      animation: shine 3s infinite;
-    }
-
-    @keyframes shine {
-      0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
-      100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
-    }
   </style>
+
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       const boardingPass = document.querySelector('.boarding-pass');
       const coupleNames = document.querySelector('.couple-names');
       
-      // Coriandoli al click sul biglietto
       boardingPass.addEventListener('click', function(e) {
         createConfetti(e.clientX, e.clientY);
       });
 
-      // Suono di clacson al click sui nomi
       coupleNames.addEventListener('click', function(e) {
         e.stopPropagation();
         createHearts(e.clientX, e.clientY);
@@ -451,11 +317,8 @@
           confetti.style.left = x + 'px';
           confetti.style.top = y + 'px';
           confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
-          confetti.style.transform = `rotate(${Math.random() * 360}deg)`;
           confetti.style.animation = `confetti ${0.5 + Math.random() * 0.5}s ease-out forwards`;
-          confetti.style.setProperty('--x', (Math.random() - 0.5) * 400 + 'px');
           document.body.appendChild(confetti);
-          
           setTimeout(() => confetti.remove(), 1000);
         }
       }
@@ -471,22 +334,20 @@
           heart.style.pointerEvents = 'none';
           heart.style.animation = 'confetti 1s ease-out forwards';
           document.body.appendChild(heart);
-          
           setTimeout(() => heart.remove(), 1000);
         }
       }
     });
   </script>
 </head>
+
 <body>
 
 <div class="boarding-pass">
-  <!-- Banda oro sinistra -->
   <div class="gold-left">
     <div class="boarding-text">Boarding Pass</div>
   </div>
 
-  <!-- Sezione sinistra -->
   <div class="left-section">
     <div class="left-content">
       <div class="save-date-label">SAVE THE DATE</div>
@@ -506,17 +367,45 @@
         </div>
       </div>
 
-      <div class="stamp-circle">
-        <div class="stamp-icon">✈</div>
-        <div class="stamp-location">Roma</div>
+      <!--  TRAIETTORIA + AEREO (corretto, preciso e grande) -->
+      <div class="heart-trail">
+        <svg viewBox="0 0 120 120">
+          <defs>
+            <path id="heartPath" d="
+              M60 102
+              C 40 82 20 62 20 44
+              C 20 28 32 18 44 18
+              C 52 18 58 22 60 28
+              C 62 22 68 18 76 18
+              C 88 18 100 28 100 44
+              C 100 62 80 82 60 102
+              Z" />
+          </defs>
+
+          <use href="#heartPath" class="dashed-path" />
+
+          <g>
+          <text 
+            font-size="20"
+            text-anchor="middle"
+            dominant-baseline="middle"
+            dy="-3"
+          >✈</text>
+
+          <animateMotion dur="8s" repeatCount="indefinite" rotate="auto" calcMode="linear">
+
+            <mpath href="#heartPath"/>
+          </animateMotion>
+        </g>
+        </svg>
       </div>
+
     </div>
   </div>
 
-  <!-- Sezione destra -->
   <div class="right-section">
     <div class="top-info">
-      <div class="date-display">02.14.2028</div>
+      <div class="date-display">5.07.2026</div>
       <div class="flight-badge">
         <div class="flight-text">FLIGHT TO LOVE</div>
         <div class="plane-circle">✈</div>
@@ -538,7 +427,6 @@
     </div>
   </div>
 
-  <!-- Banda oro destra -->
   <div class="gold-right"></div>
 </div>
 
