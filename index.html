@@ -595,8 +595,10 @@
     }
 
 
+  
     /* MEDIA QUERY PER SMARTPHONE LANDSCAPE */
     @media (max-width: 768px) and (orientation: landscape) {
+
       body {
         padding: 5px;
       }
@@ -665,8 +667,6 @@
         transform: translate(-50%, -50%);
       }
 
-      
-
       .date-display {
         font-size: 20px;
       }
@@ -694,28 +694,28 @@
         height: 16px;
       }
 
+      /* 🔧 NOTCH sistemati per smartphone landscape */
       .top-notch {
         position: absolute;
-        top: -21px;              /* notch sopra il barcode */
+        top: -21px;
         left: 50%;
         transform: translateX(-50%);
       }
-
       .top-notch::before {
-        clip-path: inset(50% 0 0 0);   /* semicerchio inferiore */
+        clip-path: inset(50% 0 0 0);
       }
 
       .bottom-notch {
         position: absolute;
-        bottom: -21px;           /* notch sotto il barcode */
+        bottom: -21px;
         left: 50%;
         transform: translateX(-50%);
       }
-
       .bottom-notch::before {
-        clip-path: inset(0 0 50% 0);   /* semicerchio superiore */
+        clip-path: inset(0 0 50% 0);
       }
     }
+
 
     /* OTTIMIZZAZIONI PER SCHERMI MOLTO PICCOLI */
     @media (max-width: 400px) {
