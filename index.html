@@ -175,7 +175,7 @@
       font-family: "Great Vibes", cursive;
       font-size: 24px;
       color: #3d3d3d;
-      font-weight: 500;
+      font-weight:bold;
       font-style: italic;
       transition: all 0.3s ease;
       cursor: pointer;
@@ -347,35 +347,36 @@
 
     .ticket-notch {
       position: absolute;
-      left: 57%;
       width: 42px;
       height: 42px;
-      z-index: 9999;
+      z-index: 50;
     }
 
     .ticket-notch::before {
       content: "";
       position: absolute;
-      width: 42px;
-      height: 42px;
+      inset: 0;
       border-radius: 50%;
       background: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%);
     }
 
+    /* notch desktop = top/bottom del barcode */
+    .top-notch {
+      top: calc( -21px);
+      left: 71.2%;
+      
+    }
     .top-notch::before {
       clip-path: inset(50% 0 0 0);
     }
 
+    .bottom-notch {
+      bottom: calc(-21px);
+      left: 71.2%;
+      
+    }
     .bottom-notch::before {
       clip-path: inset(0 0 50% 0);
-    }
-
-    .top-notch {
-      top: -21px;
-    }
-
-    .bottom-notch {
-      bottom: -21px;
     }
 
     .calendar-box {
@@ -415,9 +416,11 @@
       display: flex;
       align-items: center;
     }
-
+   
+    /* MEDIA QUERIES PER SMARTPHONE */
     /* MEDIA QUERIES PER SMARTPHONE */
     @media (max-width: 768px) {
+
       body {
         padding: 10px;
       }
@@ -426,6 +429,7 @@
         flex-direction: column;
         width: 100%;
         max-width: 500px;
+        position: relative; /* NECESSARIO per i notch */
       }
 
       .boarding-pass:hover {
@@ -495,26 +499,6 @@
         transform: translate(-50%, -50%);
       }
 
-      .barcode-separator {
-        width: 100%;
-        height: 40px;
-        border-left: none;
-        border-right: none;
-        border-top: 2px dashed #ffd3e0;
-        border-bottom: 2px dashed #ffd3e0;
-      }
-
-      .barcode-separator img {
-        transform: rotate(0deg);
-        width: 100%;
-        height: auto;
-        max-height: 30px;
-      }
-
-      .ticket-notch {
-        display: none;
-      }
-
       .top-info {
         margin-bottom: 30px;
       }
@@ -546,7 +530,70 @@
         width: 18px;
         height: 18px;
       }
+
+
+      /* -----------------------
+        NOTCH MOBILE SX/DX
+      ------------------------ */
+
+      .ticket-notch {
+        position: absolute;
+        width: 42px;
+        height: 42px;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 999;
+      }
+
+      /* notch sinistra */
+       .top-notch,
+        .bottom-notch {
+          top: 65% !important;
+          transform: translateY(-50%);
+          left: -21px !important;
+          right: auto !important;
+        }
+
+        /* Il secondo notch (ex bottom-notch) va a destra */
+        .bottom-notch {
+          left: auto !important;
+          right: -21px !important;
+        }
+
+        /* Mantiene il taglio semicircolare corretto */
+        .top-notch::before {
+          
+          rotate: calc(-90deg);
+          clip-path: inset(50% 0 0 0);  /* semicerchio sinistro */
+        }
+
+        .bottom-notch::before {
+          rotate: calc(-90deg);
+          clip-path: inset(0 0 50% 0);  /* semicerchio destro */
+        }
+
+
+      /* -----------------------
+        BARCODE ORIZZONTALE
+      ------------------------ */
+      .barcode-separator {
+        width: 100%;
+        height: 40px;
+        border-left: none;
+        border-right: none;
+        border-top: 2px dashed #ffd3e0;
+        border-bottom: 2px dashed #ffd3e0;
+        overflow: hidden;
+      }
+
+      .barcode-separator img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    transform: rotate(0deg) !important;
+  }
     }
+
 
     /* MEDIA QUERY PER SMARTPHONE LANDSCAPE */
     @media (max-width: 768px) and (orientation: landscape) {
@@ -618,20 +665,7 @@
         transform: translate(-50%, -50%);
       }
 
-      .barcode-separator {
-        width: 35px;
-        height: auto;
-        border-left: 2px dashed #ffd3e0;
-        border-right: 2px dashed #ffd3e0;
-        border-top: none;
-        border-bottom: none;
-      }
-
-      .barcode-separator img {
-        transform: rotate(90deg);
-        width: 400px;
-        height: 100%;
-      }
+      
 
       .date-display {
         font-size: 20px;
