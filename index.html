@@ -417,7 +417,7 @@
       align-items: center;
     }
    
-    /* MEDIA QUERIES PER SMARTPHONE */
+ 
     /* MEDIA QUERIES PER SMARTPHONE */
     @media (max-width: 768px) {
 
@@ -692,6 +692,28 @@
       .calendar-icon svg {
         width: 16px;
         height: 16px;
+      }
+
+      .top-notch {
+        position: absolute;
+        top: -21px;              /* notch sopra il barcode */
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      .top-notch::before {
+        clip-path: inset(50% 0 0 0);   /* semicerchio inferiore */
+      }
+
+      .bottom-notch {
+        position: absolute;
+        bottom: -21px;           /* notch sotto il barcode */
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      .bottom-notch::before {
+        clip-path: inset(0 0 50% 0);   /* semicerchio superiore */
       }
     }
 
