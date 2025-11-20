@@ -694,25 +694,44 @@
         height: 16px;
       }
 
-      /* 🔧 NOTCH sistemati per smartphone landscape */
-      .top-notch {
+      .ticket-notch {
+        width: 42px;
+        height: 42px;
         position: absolute;
-        top: -21px;
-        left: 50%;
-        transform: translateX(-50%);
-      }
-      .top-notch::before {
-        clip-path: inset(50% 0 0 0);
+        top: 50%;                 /* centrati verticalmente */
+        transform: translateY(-50%);
+        z-index: 999;
       }
 
+      /* notch sinistro */
+      .top-notch {
+        left: calc(71.2% - 21px);  /* stessa posizione del desktop */
+      }
+      .top-notch::before {
+        clip-path: inset(0 50% 0 0); /* semicerchio sinistro */
+      }
+
+      /* notch destro */
       .bottom-notch {
-        position: absolute;
-        bottom: -21px;
-        left: 50%;
-        transform: translateX(-50%);
+        right: calc(100% - 71.2% - 21px); /* speculare */
       }
       .bottom-notch::before {
-        clip-path: inset(0 0 50% 0);
+        clip-path: inset(0 0 0 50%); /* semicerchio destro */
+      }
+
+      /* Barcode verticale centrato */
+      .barcode-separator {
+        height: 100%;
+        width: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .barcode-separator img {
+        transform: rotate(90deg);   /* mantiene la verticalità corretta */
+        height: 100%;
+        width: auto;
       }
     }
 
