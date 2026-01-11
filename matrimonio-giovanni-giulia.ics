@@ -7,7 +7,7 @@ UID:matrimonio-giovanni-giulia-20260705@example.com
 SUMMARY:Matrimonio Giovanni & Giulia
 DTSTART;VALUE=DATE:20260705
 DTEND;VALUE=DATE:20260706
-LOCATION:Scuderie San Giorgio, Roma
+LOCATION:Roma
 DESCRIPTION:Save the Date - Matrimonio Giovanni & Giulia.
 BEGIN:VALARM
 ACTION:DISPLAY
